@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Catcher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Ensure full height and no scroll */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      /* Custom canvas resizing */
+      canvas {
+        transition: background-color 0.5s ease-in-out;
+      }
+
+      /* Make sure the body takes the full screen */
+      body {
+        background: linear-gradient(135deg, #1f2937, #111827);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Ensure the game fits perfectly inside the viewport */
+      #gameContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-around;
+        width: 100vw;
+        height: 100vh;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gameContainer">
+      <!-- Game Information Panel -->
+      <div class="infoPanel">
+        <h1 class="text-4xl text-white font-bold mb-6">
+          Interactive Ball Game
+        </h1>
+
+        <!-- Instructions -->
+        <div class="mb-6 bg-gray-900 p-4 rounded-lg shadow-lg text-white">
+          <h2 class="text-lg font-semibold">How to Play:</h2>
+          <p>1. Click on the green or yellow ball to increase your score.</p>
+          <p>2. Avoid clicking the red ball as it will decrease your score.</p>
+          <p>3. Reach a score of 50 to win!</p>
+          <p>4. If your score falls to 0, you lose the game.</p>
+        </div>
+
+        <!-- Difficulty Level Selection -->
+        <div class="mb-4">
+          <p class="text-white mb-2">Select difficulty level:</p>
+          <select
+            id="levelInput"
+            class="px-4 py-2 rounded-lg text-lg bg-gray-800 text-white border border-gray-500 focus:outline-none"
+          >
+            <option value="1">Easy (Level 1)</option>
+            <option value="2">Medium (Level 2)</option>
+            <option value="3">Hard (Level 3)</option>
+          </select>
+        </div>
+
+        <!-- Start and Stop Buttons -->
+        <div class="mb-4">
+          <button
+            id="startButton"
+            class="px-6 py-3 bg-green-600 text-white text-lg font-semibold rounded-lg hover:bg-green-700 transition duration-300 ease-in-out shadow-lg mr-2"
+          >
+            Start
+          </button>
+          <button
+            id="stopButton"
+            class="px-6 py-3 bg-red-600 text-white text-lg font-semibold rounded-lg hover:bg-red-700 transition duration-300 ease-in-out shadow-lg"
+          >
+            Stop
+          </button>
+        </div>
+
+        <!-- Scoreboard (Now aligned with the instructions) -->
+        <div
+          id="scoreBoard"
+          class="mt-6 text-white text-2xl font-semibold p-4 bg-gray-900 rounded-lg shadow-lg border border-gray-700"
+        >
+          Score: 0
+        </div>
+      </div>
+
+      <!-- Game Canvas -->
+      <canvas
+        id="gameCanvas"
+        class="ml-8 rounded-lg shadow-2xl border-4 border-gray-700 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800"
+      ></canvas>
+    </div>
+
+    <!-- Import the external JS file -->
+    <script src="game.js"></script>
+  </body>
+</html>
